@@ -2,13 +2,28 @@ public class User implements IUser {
     private String Name;
     private String Password;
     private int userType;
+    private String Oname;
 
 
     public User(){
-        setName("");
-        setPassword("");
-        setUserType(0);
+    }
 
+    public User(int type, String name, String password){
+        setName(name);
+        setPassword(password);
+        setUserType(type);
+    }
+
+    public User(Student o){
+        this.setName(o.getName());
+        this.setPassword(o.getPassword());
+        this.setUserType(o.getType());
+    }
+    
+    public User(Teacher o){
+        this.setName(o.getName());
+        this.setPassword(o.getPassword());
+        this.setUserType(o.getType());
     }
 
     public  String getPassword(){
@@ -21,17 +36,15 @@ public class User implements IUser {
 
     @Override
     public String setName(String name) {
-
-        String Oname = null;
         String a = "[a-zA-Z][A-Za-z0-9]{3,}";
         if(name != null && !name.equals("")){
             if(name.matches(a)){
-                Oname = Name;
+                Oname = name;
                 Name = name;
-            }else
-                throw new RuntimeException("Username not Correct");
-        }
-        return Oname;
+                return name;
+            }
+        }return Oname;
+
     }
 
 
@@ -50,7 +63,7 @@ public class User implements IUser {
 
     @Override
     public boolean isPasswordCorrect(String password) {
-        if(password.matches(Password)){
+        if(password != null && !password.equals("") && this.Password.equals(password)){
             return true;
         }
         return false;

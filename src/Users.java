@@ -3,21 +3,27 @@ import java.util.ArrayList;
 public class Users  {
     // User repository
     private ArrayList<IUser> userList;
-    private User us;
+
+    public Users(){
+        userList = new ArrayList<IUser>();
+    }
 
     // Create new user with type, name and; password
     // user created with this method should be automatically added to userList;
     public IUser create(int type, String name, String password) {
-        User us = new User();
-        us.setName(name);
-        us.setPassword(password);
-        us.setUserType(type);
-       return us;
+        User us = new User(type, name, password);
+        userList.add(us);
+        return us;
     }
 
     // Add new user to repository
     public void add(IUser user) {
-        userList.add(user);
+        System.out.println("AddU"+user);
+        if(user != null){
+            userList.add(user);
+        }else {
+            throw new RuntimeException("Not should add Null Object");
+        }
 
     }
 
@@ -28,6 +34,8 @@ public class Users  {
             if (exists(user)){
                 userList.remove(user);
             }
+        }else {
+            throw new RuntimeException("user is not in the list");
         }
 
     }
