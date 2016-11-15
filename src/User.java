@@ -23,7 +23,7 @@ public class User implements IUser {
     public String setName(String name) {
 
         String Oname = null;
-        String a = "[a-zA-Z][A-Za-z0-9]{4,}";
+        String a = "[a-zA-Z][A-Za-z0-9]{3,}";
         if(name != null && !name.equals("")){
             if(name.matches(a)){
                 Oname = Name;
@@ -62,10 +62,8 @@ public class User implements IUser {
     }
 
     public void setUserType(int userType){
-        if (userType == USER_STUDENT || userType == USER_TEACHER){
+        if (userType == USER_STUDENT || userType == USER_TEACHER) {
             this.userType = userType;
-        }else {
-            throw new RuntimeException("User Type Error");
         }
 
     }
