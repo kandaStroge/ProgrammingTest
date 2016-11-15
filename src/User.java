@@ -2,7 +2,8 @@ public class User implements IUser {
     private String Name;
     private String Password;
     private int userType;
-    private String Oname;
+    private String oname;
+    private String opass;
 
 
     public User(){
@@ -19,7 +20,7 @@ public class User implements IUser {
         this.setPassword(o.getPassword());
         this.setUserType(o.getType());
     }
-    
+
     public User(Teacher o){
         this.setName(o.getName());
         this.setPassword(o.getPassword());
@@ -39,26 +40,25 @@ public class User implements IUser {
         String a = "[a-zA-Z][A-Za-z0-9]{3,}";
         if(name != null && !name.equals("")){
             if(name.matches(a)){
-                Oname = name;
+                oname = name;
                 Name = name;
                 return name;
             }
-        }return Oname;
+        }return oname;
 
     }
 
-
     @Override
-    public String setPassword(String password) {
-
+    public String setPassword(String password){
         String b = "[a-zA-Z][A-Za-z0-9]{3,}";
         if(password != null && !password.equals("")){
             if(password.matches(b)){
+                opass = password;
                 Password = password;
+                return password;
             }else
                 throw new RuntimeException("Password not correct");
-        }
-        return password;
+        }return opass;
     }
 
     @Override

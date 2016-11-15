@@ -14,10 +14,16 @@ public class MainTest {
         userList.add(u2);
         userList.add(u3);
         System.out.println(u3.setName(""));
+        System.out.println(u3.setPassword(""));
         System.out.println(u1.getName());
         System.out.println(userList.count());
         System.out.println(u1.isPasswordCorrect("A1232"));
         System.out.println(u1.isPasswordCorrect("A1232ff"));
+        System.out.println(userList.countByType(IUser.USER_STUDENT));
+        userList.remove(u1);
+        IUser u4 = new User();
+        userList.remove(u4);
+        System.out.println(userList.countByType(IUser.USER_STUDENT));
     }
 
 

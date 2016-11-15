@@ -18,7 +18,7 @@ public class Users  {
 
     // Add new user to repository
     public void add(IUser user) {
-        System.out.println("AddU"+user);
+        System.out.println("AddU "+user);
         if(user != null){
             userList.add(user);
         }else {
@@ -35,23 +35,21 @@ public class Users  {
                 userList.remove(user);
             }
         }else {
-            throw new RuntimeException("user is not in the list");
+            throw new RuntimeException("user is not in the list ");
         }
 
     }
 
     // Return true if the user is in the list
     public boolean exists(IUser user) {
-
-        if(isUserEmpty(user.getName())){
+        if(user != null && isUserEmpty(user.getName())){
             for (IUser user1: userList){
                 if (user1.getName().equals(user.getName())){
                     return true;
                 }
-
             }
-
         }return false;
+
     }
 
     // Return number of user in the list
@@ -66,17 +64,16 @@ public class Users  {
     // Return number of user in the list, according to type
     public int countByType(int type) {
         int count = 0;
-        for (IUser user1: userList){
-            if(user1.getType() == type){
-                count++;
-            }
+        if(type == IUser.USER_TEACHER || type == IUser.USER_STUDENT){
+            for (IUser user1: userList){
+                if(user1.getType() == type){
+                    count++;
+                }
 
+            }return count;
+        }else {
+            throw new RuntimeException("Type Error");
         }
-        return count;
-
-
-
-
     }
 
 
