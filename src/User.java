@@ -22,21 +22,23 @@ public class User implements IUser {
     @Override
     public String setName(String name) {
 
-        String a = "[a-zA-Z][A-Za-z0-9]{8,}";
+        String Oname = null;
+        String a = "[a-zA-Z][A-Za-z0-9]{4,}";
         if(name != null && !name.equals("")){
             if(name.matches(a)){
+                Oname = Name;
                 Name = name;
             }else
                 throw new RuntimeException("Username not Correct");
         }
-        return name;
+        return Oname;
     }
 
 
     @Override
     public String setPassword(String password) {
 
-        String b = "[a-zA-Z][A-Za-z0-9]{10,}";
+        String b = "[a-zA-Z][A-Za-z0-9]{3,}";
         if(password != null && !password.equals("")){
             if(password.matches(b)){
                 Password = password;

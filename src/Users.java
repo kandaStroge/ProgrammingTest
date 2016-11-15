@@ -1,13 +1,18 @@
 import java.util.ArrayList;
 
-public class Users {
+public class Users  {
     // User repository
     private ArrayList<IUser> userList;
+    private User us;
 
-    // Create new user with type, name and password
+    // Create new user with type, name and; password
     // user created with this method should be automatically added to userList;
     public IUser create(int type, String name, String password) {
-        return null;
+        User us = new User();
+        us.setName(name);
+        us.setPassword(password);
+        us.setUserType(type);
+       return us;
     }
 
     // Add new user to repository
