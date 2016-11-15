@@ -12,27 +12,60 @@ public class Users {
 
     // Add new user to repository
     public void add(IUser user) {
+        userList.add(user);
 
     }
 
     // Delete user from repository
     // Throw  RuntimeException if the user is not in the list
     public void remove(IUser user) throws RuntimeException {
+        if (isUserEmpty(user.getName()) && count() > 0){
+            if (exists(user)){
+                userList.remove(user);
+            }
+        }
 
     }
 
     // Return true if the user is in the list
     public boolean exists(IUser user) {
-        return false;
+
+        if(isUserEmpty(user.getName())){
+            for (IUser user1: userList){
+                if (user1.getName().equals(user.getName())){
+                    return true;
+                }
+
+            }
+
+        }return false;
     }
 
     // Return number of user in the list
     public int count() {
-        return 0;
+        return userList.size();
+    }
+
+    public boolean isUserEmpty(String e) {
+        return (e != null && !e.equals(""));
     }
 
     // Return number of user in the list, according to type
     public int countByType(int type) {
-        return 0;
+        int count = 0;
+        for (IUser user1: userList){
+            if(user1.getType() == type){
+                count++;
+            }
+
+        }
+        return count;
+
+
+
+
     }
+
+
+
 }
